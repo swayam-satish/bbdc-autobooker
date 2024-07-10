@@ -76,6 +76,7 @@ class DrivingClass:
         return final_captcha_list
 
     def fillout_captcha(self, mylist):
+        print(mylist)
         for captcha in mylist:
             try:
                 time.sleep(8)
@@ -90,6 +91,30 @@ class DrivingClass:
             except NoSuchElementException or ElementNotInteractableException:
                 break
 
+    def timetable(self):
+        time.sleep(2)
+        booking_nav = self.driver.find_element(By.XPATH, value='/html/body/div/div/div/nav/div[1]/div[3]/div['
+                                                               '2]/div/div/div[2]')
+        booking_nav.click()
+        time.sleep(2)
+        practical_booking_button = self.driver.find_element(By.XPATH, value='/html/body/div/div/div/nav/div[1]/div['
+                                                                            '3]/div[2]/div/div[2]/a[2]/div')
+        practical_booking_button.click()
+
+        time.sleep(2)
+        book_button = self.driver.find_element(By.XPATH, value='/html/body/div/div/div/main/div/div/div[2]/div/div['
+                                                               '1]/div/div/div/div/div/div[1]/div/div[1]/div[1]/div['
+                                                               '1]/div/button/span')
+        book_button.click()
+
+        time.sleep(2)
+        book_without_instructor = self.driver.find_element(By.XPATH, value='/html/body/div/div[3]/div/div/div['
+                                                                           '2]/div/div/div[1]/div/div[1]/label')
+        book_without_instructor.click()
+
+        next_button = self.driver.find_element(By.XPATH, value='/html/body/div/div[3]/div/div/div[3]/button/span')
+        next_button.click()
+
 
 bot = DrivingClass()
 bot.loging_in()
@@ -97,3 +122,4 @@ result = bot.captcha_solver()
 print(result)
 captcha_list = bot.final_captcha(result)
 bot.fillout_captcha(captcha_list)
+bot.timetable()
