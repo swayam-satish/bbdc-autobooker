@@ -1,5 +1,5 @@
 # Byte-compiled / optimized / DLL files
-captchas/captcha.png
+captchas/
 tesseract.py
 __pycache__/
 *.py[cod]
