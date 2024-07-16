@@ -1,3 +1,4 @@
+
 import time
 from captcha_solver import CaptchaSolver
 
@@ -66,6 +67,7 @@ class DrivingClass:
 
     def final_captcha(self, result):
         solver = CaptchaSolver(result)
+        solver.two_captcha()
         solver.all_caps()
         solver.one_letter()
         solver.consecutive_letters()
